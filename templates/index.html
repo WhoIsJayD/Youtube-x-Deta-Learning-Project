@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .fixed-top {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+<div class="fixed-top py-3">
+    <div class="container d-flex justify-content-center">
+        <form action="/" method="post" class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="video_url" class="sr-only">Video URL:</label>
+                <input type="text" id="video_url" name="video_url" class="form-control" placeholder="Enter video URL"
+                       required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Download</button>
+        </form>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <br>
+    <br>
+    <br>
+    <ul>
+        {% for item in items %}
+        <br>
+        <h1 class="text-center mb-4">{{ loop.index }}. {{ item }}</h1>
+        <video controls>
+            <source src="/video/{{ item }}" type="video/mp4">
+        </video>
+        <br>
+
+        {% endfor %}
+    </ul>
+</div>
+
+<script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const videoElements = document.querySelectorAll("video");
+
+        videoElements.forEach(function (video) {
+            const player = new Plyr(video);
+        });
+    });
+</script>
+</body>
+</html>
