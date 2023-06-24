@@ -11,7 +11,7 @@ from flask import Flask, render_template, request, redirect, url_for, Response
 app = Flask(__name__)
 
 # Initialize Deta project
-deta = Deta("d0AG6dLw5EAs_3KVUpWfLLNGrA73MRtPoZRAwPkvRxJH1")
+deta = Deta("Removed_Updating_Visibility_Of_Repo")
 
 # Set up Deta base
 db = deta.Drive("video_storage")
